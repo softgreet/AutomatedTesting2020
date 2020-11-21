@@ -127,8 +127,8 @@ public class TestSelection {
                     for(CGNode cgNode:testSelection.cfaCg){
                         IMethod method = cgNode.getMethod();
                         String classname=method.toString().split(",")[1].substring(1);
-                        if(selected_classes.contains(classname)){
-                            bufferedWriter.write(String.format("%s %s",classname,method.getSignature()));
+                        if(selected_classes.contains(classname)&&!method.getSignature().contains("initialize")){
+                            bufferedWriter.write(String.format("%s %s",classname,method.getSignature())+"\n");
                         }
                     }
                     bufferedWriter.flush();
