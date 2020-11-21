@@ -120,8 +120,16 @@ public class TestSelection {
                             selectTest(cgNode,testSelection.cfaCg,selected_methods, new HashSet<>());
                         }
                     }
+                    Set<String> selected_classes = new HashSet<>();
                     for(String line:selected_methods){
-                        bufferedWriter.write(line+"\n");
+                        selected_classes.add(line.split(" ")[0]);
+                    }
+                    for(CGNode cgNode:testSelection.cfaCg){
+                        IMethod method = cgNode.getMethod();
+                        String classname=method.toString().split(",")[1].substring(1);
+                        if(selected_classes.contains(classname)){
+                            bufferedWriter.write(String.format("%s %s",classname,method.getSignature()));
+                        }
                     }
                     bufferedWriter.flush();
                     bufferedWriter.close();
