@@ -119,14 +119,13 @@ public class TestSelection {
                         if(changed_classes.contains(classname)){
                             selectTest(cgNode,testSelection.cfaCg,selected_methods, new HashSet<>());
                         }
-                        for(String line:selected_methods){
-                            bufferedWriter.write(line+"\n");
-                        }
-                        bufferedWriter.flush();
-                        bufferedWriter.close();
-                        return selected_methods;
                     }
-
+                    for(String line:selected_methods){
+                        bufferedWriter.write(line+"\n");
+                    }
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    return selected_methods;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
